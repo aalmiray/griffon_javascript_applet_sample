@@ -1,0 +1,3 @@
+eventPackageAppStart = {
+    griffonAppletClass = 'calculator.CalculatorApplet'
+}

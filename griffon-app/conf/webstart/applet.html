@@ -1,0 +1,52 @@
+<html>
+<head>
+  <title>Griffon + JavaScript</title>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="http://java.com/js/deployJava.js"></script>
+</head>
+<body>
+
+<table>
+    <tr>
+        <td>Number1:</td>
+        <td><input type="text" name="number1" id="number1"></td>
+    </tr>
+    <tr>
+        <td>Number2:</td>
+        <td><input type="text" name="number2" id="number2"></td>
+    </tr>
+    <tr>
+        <td>Result</td>
+        <td><input type="text" name="result" id="result"></td>
+    </tr>
+    <tr colspan="2">
+        <td><button onClick="calculate();">Calculate!</button></td>
+    </tr>
+</table>
+
+<script>
+    function calculate() {
+        var n1 = $('#number1').val();
+        var n2 = $('#number2').val();
+        var r = document.applets.calculatorApplet.calculateFromJava(n1, n2)
+        $('#result').val(r)
+    }
+
+    var attributes = {id: 'calculatorApplet',
+                      codebase:'@griffonAppCodebase@',
+                      code:'@griffonAppletClass@',
+                      archive:'@appletJars@',
+                      width:'@applet.width@', height:'@applet.height@'};
+    var parameters = {fontSize:16,
+                      java_arguments: "-Djnlp.packEnabled=true",
+                      jnlp_href:'@griffonAppCodebase@/applet.jnlp',
+                      draggable:'true',
+                      image:'griffon.png',
+                      boxmessage:'Loading Calculator',
+                      boxbgcolor:'#FFFFFF', boxfgcolor:'#000000',
+                      codebase_lookup: 'false'@applet.script.params@};
+    var version = '1.7';
+    deployJava.runApplet(attributes, parameters, version);
+</script>
+</body>
+</html>
