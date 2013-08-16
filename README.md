@@ -9,7 +9,7 @@ Instructions
 
  - Create an applet package by invoking
 
-     griffonw prod package applet
+        griffonw prod package applet
 
  - edit `dist/applet/applet.hmtl` and `dist/applet/applet.jnlp`; update all references to codebase and documentbase to point to the absolute directory where these files are kept; aletrnatively publish the applet to a webserver (also update the codebase accordingly)
  - open `applet.html` in a browser
